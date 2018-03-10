@@ -143,7 +143,7 @@
       DestinationFolder="$(SolutionDir)GUI\"
       OverwriteReadOnlyFiles="true"
       SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\Aquifer.dll"
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Release\Aquifer.dll"
       DestinationFolder="$(SolutionDir)GUI\"
       OverwriteReadOnlyFiles="true"
       SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Release'" />
