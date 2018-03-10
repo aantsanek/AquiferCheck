@@ -23,7 +23,8 @@ namespace GUI
     public partial class MainWindow : Window
     {
         [DllImport("AquiferD.dll")]
-        public static extern int doNothing();
+        public static extern int doNothing(string input);
+        //public static extern int doNothing(string input);
 
         public MainWindow()
         {
@@ -33,11 +34,21 @@ namespace GUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+           
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                dataFilePath.Text = filename;
+            }
             Debug.WriteLine("Initialize");
-            int x = doNothing();
-            Debug.WriteLine(doNothing());
-            Debug.WriteLine("Done");
+            string t = dataFilePath.Text;
+            int x = doNothing(t);
             MessageBox.Show(x.ToString());
+
         }
     }
 }

@@ -1,13 +1,14 @@
 #pragma once
+#include "common.h"
 class EntryPoint
 {
 public:
 	EntryPoint();
 	~EntryPoint();
 
-	static int doNothing()
+	static int doNothing(const std::string& input)
 	{
-		return 10;
+		return input.size();
 	}
 };
 

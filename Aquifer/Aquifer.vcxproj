@@ -43,6 +43,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -84,9 +85,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>precompiled.h</PrecompiledHeaderFile>
-      <ForcedIncludeFiles>precompiled.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <PostBuildEvent>
       <Command>
@@ -118,26 +119,33 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EntryPoint.h" />
-    <ClInclude Include="precompiled.h" />
+    <ClInclude Include="common.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntryPoint.cpp" />
-    <ClCompile Include="precompiled.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
-    <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\Debug\AquiferD.dll $(SolutionDir)GUI\Engine\</Command>
-    </PostBuildEvent>
-   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
-    <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Platform)\Release\Aquifer.dll $(SolutionDir)GUI\Engine\</Command>
-    </PostBuildEvent>
-  </ItemDefinitionGroup>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.pdb"
+          DestinationFolder="$(SolutionDir)GUI\"
+          OverwriteReadOnlyFiles="true"
+          SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.dll"
+      DestinationFolder="$(SolutionDir)GUI\"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\Aquifer.dll"
+      DestinationFolder="$(SolutionDir)GUI\"
+      OverwriteReadOnlyFiles="true"
+      SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Release'" />
+  </Target>
 </Project>

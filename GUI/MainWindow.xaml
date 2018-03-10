@@ -8,6 +8,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <TextBox x:Name="dataFilePath" HorizontalAlignment="Left" Height="20" Margin="101,10,0,0" TextWrapping="Wrap" Text="Data" VerticalAlignment="Top" Width="406"/>
 
     </Grid>
 </Window>
