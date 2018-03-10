@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Aquifer", "Aquifer\Aquifer.vcxproj", "{2B6AB974-FD5C-4B15-A9DC-D72ED8C42752}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{3F0829CC-018A-43CE-B619-48283A33D6BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2B6AB974-FD5C-4B15-A9DC-D72ED8C42752} = {2B6AB974-FD5C-4B15-A9DC-D72ED8C42752}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,11 +26,18 @@ Global
 		{2B6AB974-FD5C-4B15-A9DC-D72ED8C42752}.Release|x64.Build.0 = Release|x64
 		{2B6AB974-FD5C-4B15-A9DC-D72ED8C42752}.Release|x86.ActiveCfg = Release|Win32
 		{2B6AB974-FD5C-4B15-A9DC-D72ED8C42752}.Release|x86.Build.0 = Release|Win32
+		{3F0829CC-018A-43CE-B619-48283A33D6BD}.Debug|x64.ActiveCfg = Debug|x64
+		{3F0829CC-018A-43CE-B619-48283A33D6BD}.Debug|x64.Build.0 = Debug|x64
+		{3F0829CC-018A-43CE-B619-48283A33D6BD}.Debug|x86.ActiveCfg = Debug|x64
+		{3F0829CC-018A-43CE-B619-48283A33D6BD}.Release|x64.ActiveCfg = Release|x64
+		{3F0829CC-018A-43CE-B619-48283A33D6BD}.Release|x64.Build.0 = Release|x64
+		{3F0829CC-018A-43CE-B619-48283A33D6BD}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1AF87F26-242A-4306-B51B-B4E9CD47C580}
+		Qt5Version = 5.10.1
 	EndGlobalSection
 EndGlobal
