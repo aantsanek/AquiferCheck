@@ -4,7 +4,7 @@
 class WaterLevelTable
 {
 	struct WaterLevelBlock;
-	std::vector<WaterLevelBlock> table;
+	std::map<std::pair<int, int>, std::pair<int, double>> table;
 	
 public:
 	WaterLevelTable() {}
@@ -16,20 +16,3 @@ public:
 private:
 	bool areValidCoords(const int x, const int y) const;
 };
-
-struct WaterLevelTable::WaterLevelBlock
-{
-	//For each x and y -> get water level (its Zcoord and depth of that coord)
-	int x;
-	int y;
-	int z;
-	double depth;
-
-	WaterLevelBlock(const int x, const int y, const int z, const double depth)
-		: x{ x }, y{ y }, z{ z }, depth{ depth }
-	{
-	}
-
-	~WaterLevelBlock() {}
-};
-

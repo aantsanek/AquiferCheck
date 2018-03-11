@@ -15,6 +15,11 @@ shared_ptr<vector<string>> FileReader::readFile(const string& path)
 	string line;
 	while (getline(file, line))
 	{
+		if (line == "/")
+		{
+			output->emplace_back(line);
+			continue;
+		}
 		if (line.size() < 2)//questionable
 		{
 			continue;
