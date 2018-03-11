@@ -127,25 +127,22 @@
   <ItemGroup>
     <ClInclude Include="EntryPoint.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="WaterLevelAnalyzer.h" />
+    <ClInclude Include="WaterLevelTable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntryPoint.cpp" />
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="WaterLevelAnalyzer.cpp" />
+    <ClCompile Include="WaterLevelTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.pdb"
-          DestinationFolder="$(SolutionDir)GUI\"
-          OverwriteReadOnlyFiles="true"
-          SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.dll"
-      DestinationFolder="$(SolutionDir)GUI\"
-      OverwriteReadOnlyFiles="true"
-      SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Release\Aquifer.dll"
-      DestinationFolder="$(SolutionDir)GUI\"
-      OverwriteReadOnlyFiles="true"
-      SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Release'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.pdb" DestinationFolder="$(SolutionDir)GUI\" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.dll" DestinationFolder="$(SolutionDir)GUI\" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Release\Aquifer.dll" DestinationFolder="$(SolutionDir)GUI\" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Release'" />
   </Target>
 </Project>

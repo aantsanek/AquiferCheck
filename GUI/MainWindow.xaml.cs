@@ -25,6 +25,9 @@ namespace GUI
         [DllImport("AquiferD.dll")]
         public static extern int doNothing(string input);
         //public static extern int doNothing(string input);
+        [DllImport("AquiferD.dll")]
+        public static extern void calculateButtonClicked();
+
 
         public MainWindow()
         {
@@ -49,6 +52,11 @@ namespace GUI
             int x = doNothing(t);
             MessageBox.Show(x.ToString());
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            calculateButtonClicked();
         }
     }
 }

@@ -16,3 +16,8 @@ extern "C" __declspec(dllexport) int doNothing(const char* input)
 	std::cout << x;
 	return EntryPoint::doNothing(x);
 }
+
+extern "C" __declspec(dllexport) void calculateButtonClicked()
+{
+	//run the algorithm here
+}
