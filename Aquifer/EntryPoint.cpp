@@ -1,5 +1,7 @@
 #include "EntryPoint.h"
-#include <iostream>
+#include "WaterLevelAnalyzer.h"
+
+
 EntryPoint::EntryPoint()
 {
 }
@@ -20,4 +22,6 @@ extern "C" __declspec(dllexport) int doNothing(const char* input)
 extern "C" __declspec(dllexport) void calculateButtonClicked()
 {
 	//run the algorithm here
+	WaterLevelAnalyzer analyzer;
+	analyzer.fillWaterLevelTable();
 }

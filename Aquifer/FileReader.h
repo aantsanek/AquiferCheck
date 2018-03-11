@@ -7,6 +7,6 @@ public:
 	FileReader() {}
 	~FileReader() {}
 
-	static std::shared_ptr<std::vector<double>> readFile();
+	static std::shared_ptr<std::vector<std::string>> readFile(const std::string& path);
 };
 
