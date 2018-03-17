@@ -1,5 +1,4 @@
 #include "WaterLevelAnalyzer.h"
-#include "FileReader.h"
 using namespace std;
 
 void WaterLevelAnalyzer::fillWaterLevelTable()
@@ -7,10 +6,10 @@ void WaterLevelAnalyzer::fillWaterLevelTable()
 	//read all files and get what needed
 	std::string folder(R"(E:\projects\MastersDegree\Input\)");
 
-	auto tops = FileReader::readFile(folder + "TOPS");
-	auto sgas = FileReader::readFile(folder + "SGAS_2015");
-	auto satnum = FileReader::readFile(folder + "SATNUM");
-	auto phases = FileReader::readFile(folder + "PHASES");
+	auto tops = FileReader::readAllFile(folder + "TOPS");
+	auto sgas = FileReader::readAllFile(folder + "SGAS_2015");
+	auto satnum = FileReader::readAllFile(folder + "SATNUM");
+	auto phases = FileReader::readAllFile(folder + "PHASES");//TODO: READ
 
 	//razm = DX * DY * DZ
 	//razm = 90 * 20 * 61
@@ -83,7 +82,7 @@ void WaterLevelAnalyzer::fillData(const shared_ptr<vector<CubeData>>& data, cons
 
 bool WaterLevelAnalyzer::CubeData::isCubeWater() const
 {
-	if (sgas > 0.3)
+	if (sgas > 0.3)//TODO: Implement real function, that depends on Phases
 	{
 		return false;
 	}
