@@ -19,20 +19,28 @@ extern "C" __declspec(dllexport) int doNothing(const char* input)
 	std::cout << x;
 	return EntryPoint::doNothing(x);
 }
+/*
+We have three maps
+First map from waterLevelAnalyzer
+	shows model water level for a given SGAS
+	[x,y] -> [z, depth]
+Second map from WellMap
+	shows coords of a given well
+	[wellname] -> [x,y,deepestZ]
+Third map from FactReceiver
+	shows fact water level read from csv
+	[wellname] -> [depth]
+*/
 
 extern "C" __declspec(dllexport) void calculateButtonClicked()
 {
 	//run the algorithm here
 	WaterLevelAnalyzer analyzer;
 	analyzer.fillWaterLevelTable();
-	//OK WE HAVE A TABLE WITH WATER LEVEL
-
-	//Now we need to compare it with fact
 	WellMap wellMap;
 	wellMap.initialize();
 	FactReceiver fact;
 	fact.getWaterLevel();
-	//auto z = fact.getAllWellNames();
 	std::map<std::string, double> results;
 	for (auto wellName : fact.getAllWellNames())
 	{
@@ -42,4 +50,10 @@ extern "C" __declspec(dllexport) void calculateButtonClicked()
 		results[wellName] = result;
 	}
 
+	//results table should be printed to file somewhere (#0 iteration)
+	//and now we need to read perfZ to change some values there
+
+	//after run eclipse and get results
+
+	//repeat
 }
