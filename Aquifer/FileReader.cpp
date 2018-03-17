@@ -1,7 +1,7 @@
 #include "FileReader.h"
 using namespace std;
 
-shared_ptr<vector<string>> FileReader::readAllFile(const string& path)
+shared_ptr<vector<string>> FileReader::readAllFile(const string& path, const char delim)
 {
 	auto output = make_shared<vector<string>>();
 	ifstream file(path);
@@ -30,7 +30,7 @@ shared_ptr<vector<string>> FileReader::readAllFile(const string& path)
 		}
 		std::stringstream ss(line);
 		std::string item;
-		while (getline(ss, item, ' '))
+		while (getline(ss, item, delim))
 		{
 			if (item == " " || item == "")
 			{
@@ -85,7 +85,7 @@ std::shared_ptr<std::vector<std::string>> FileReader::readKeyword(const std::str
 	return output;
 }
 
-std::shared_ptr<std::vector<std::string>> FileReader::breakLineToPieces(const const std::string & line)
+std::shared_ptr<std::vector<std::string>> FileReader::breakLineToPieces(const const std::string & line, const char delim)
 {
 	auto output = make_shared<vector<string>>();
 	std::stringstream ss(line);

@@ -9,11 +9,11 @@ public:
 	~WellMap() = default;
 
 	void initialize();
+	std::pair<int, int> getCoordsByWellName(const std::string& wellName) const;
 };
 
 struct WellMap::WellProperties
 {
-	//std::string name;
 	int x;
 	int y;
 	int lastZ;
@@ -21,7 +21,6 @@ struct WellMap::WellProperties
 	WellProperties(const int _x, const int _y, const int _lastZ)
 		: x{_x}, y{_y}, lastZ{_lastZ}
 	{
-
 	}
 };
 

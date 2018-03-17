@@ -9,6 +9,10 @@ void WellMap::initialize()
 	for (const auto& element : *history)
 	{
 		auto toPieces = FileReader::breakLineToPieces(element);
+		if (toPieces->empty())
+		{
+			continue;
+		}
 		const auto wellName = (*toPieces)[0];
 		const auto xCoord = stod((*toPieces)[1], 0);
 		const auto yCoord = stod((*toPieces)[2], 0);
@@ -26,4 +30,15 @@ void WellMap::initialize()
 		WellProperties wellProps(xCoord, yCoord, lastZ);
 		wellMap[wellName] = wellProps;
 	}
+}
+
+std::pair<int, int> WellMap::getCoordsByWellName(const std::string& wellName) const
+{
+	auto existance = wellMap.find(wellName);
+	if (existance == wellMap.end())
+	{
+		return {-1, -1};
+	}
+	auto props = wellMap.at(wellName);
+	return { props.x, props.y };
 }

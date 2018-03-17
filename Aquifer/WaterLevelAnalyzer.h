@@ -14,6 +14,7 @@ public:
 	~WaterLevelAnalyzer() {}
 
 	void fillWaterLevelTable();
+	double getDifferenceLevelModelFact(const int x, const int y, const double factLevel);
 private:
 	void WaterLevelAnalyzer::fillData(const std::shared_ptr<std::vector<CubeData>>& data,
 									  const std::shared_ptr<std::vector<std::string>>& readArray,

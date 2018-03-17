@@ -47,6 +47,20 @@ void WaterLevelAnalyzer::fillWaterLevelTable()
 
 }
 
+double WaterLevelAnalyzer::getDifferenceLevelModelFact(const int x, const int y, const double factLevel)
+{
+	if (factLevel == -1)
+	{
+		return std::nan("");
+	}
+	auto modelDepth = m_table->getDepth(x, y).second;//real depth
+	if (modelDepth == -1)
+	{
+		return std::nan("");
+	}
+	return factLevel - modelDepth;
+}
+
 void WaterLevelAnalyzer::fillData(const shared_ptr<vector<CubeData>>& data, const shared_ptr<vector<string>>& readArray, const string& name)
 {
 	auto i = 0;

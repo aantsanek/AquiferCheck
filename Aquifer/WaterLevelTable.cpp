@@ -21,7 +21,7 @@ void WaterLevelTable::addBlock(const int x, const int y, const int z, const doub
 
 std::pair<int, double> WaterLevelTable::getDepth(const int x, const int y) const
 {
-	if (areValidCoords(x, y))
+	if (!areValidCoords(x, y))
 	{
 		//warning
 		return { -1, -1 };
