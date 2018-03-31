@@ -38,7 +38,7 @@ extern "C" __declspec(dllexport) void calculateButtonClicked()
 	DataFileHandler dfh;
 	std::string folder(R"(E:\projects\MastersDegree\Input\PROJECT.DATA)");
 	dfh.initialize(folder);
-	dfh.copyFolder();
+	dfh.runIteration();
 
 
 	//run the algorithm here
