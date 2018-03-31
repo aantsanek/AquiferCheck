@@ -7,4 +7,5 @@
 #include <fstream>
 #include <sstream>
 #include <map>
+#include <stdlib.h>
 #include "FileReader.h"

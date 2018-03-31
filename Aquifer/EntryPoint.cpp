@@ -2,6 +2,7 @@
 #include "WaterLevelAnalyzer.h"
 #include "WellMap.h"
 #include "FactReceiver.h"
+#include "DataFileHandler.h"
 
 EntryPoint::EntryPoint()
 {
@@ -34,6 +35,12 @@ Third map from FactReceiver
 
 extern "C" __declspec(dllexport) void calculateButtonClicked()
 {
+	DataFileHandler dfh;
+	std::string folder(R"(E:\projects\MastersDegree\Input\PROJECT.DATA)");
+	dfh.initialize(folder);
+	dfh.copyFolder();
+
+
 	//run the algorithm here
 	WaterLevelAnalyzer analyzer;
 	analyzer.fillWaterLevelTable();
