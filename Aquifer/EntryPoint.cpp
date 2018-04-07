@@ -38,6 +38,7 @@ extern "C" __declspec(dllexport) void calculateButtonClicked()
 {
 	PermeabilityChanger pc;
 	pc.fillData();
+	pc.changePerm(15, 9, 18);
 
 
 	DataFileHandler dfh;
