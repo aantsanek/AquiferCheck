@@ -51,7 +51,7 @@ void DataFileHandler::copyFolder()
 	system(command.c_str());
 }
 
-void DataFileHandler::runIteration()
+std::string DataFileHandler::runIteration()
 {
 	copyFolder();
 
@@ -79,7 +79,7 @@ void DataFileHandler::runIteration()
 	printf("Executing command DIR...\n");
 	i = system(batchFilePath.c_str());
 	printf("The value returned was: %d.\n", i);
-
+	return m_currentIterationFolder;
 }
 
 void DataFileHandler::splitFilename(const string& str)

@@ -1,8 +1,8 @@
 #include "WellMap.h"
 
-void WellMap::initialize()
+void WellMap::initialize(const std::string& folder)
 {
-	std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
 
 	auto history = FileReader::readKeyword(folder + "HISTORY", "COMPDAT");
 

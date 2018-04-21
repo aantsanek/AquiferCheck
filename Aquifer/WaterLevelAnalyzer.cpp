@@ -1,10 +1,10 @@
 #include "WaterLevelAnalyzer.h"
 using namespace std;
 
-void WaterLevelAnalyzer::fillWaterLevelTable()
+void WaterLevelAnalyzer::fillWaterLevelTable(const std::string& folder)
 {
 	//read all files and get what needed
-	std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
 
 	auto tops = FileReader::readAllFile(folder + "TOPS");
 	auto sgas = FileReader::readAllFile(folder + "SGAS_2015");

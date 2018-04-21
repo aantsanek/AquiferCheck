@@ -8,7 +8,7 @@ public:
 	WellMap() = default;
 	~WellMap() = default;
 
-	void initialize();
+	void initialize(const std::string& folder);
 	std::pair<int, int> getCoordsByWellName(const std::string& wellName) const;
 };
 

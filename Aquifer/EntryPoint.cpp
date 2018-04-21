@@ -36,34 +36,55 @@ Third map from FactReceiver
 
 extern "C" __declspec(dllexport) void calculateButtonClicked()
 {
-	PermeabilityChanger pc;
-	pc.fillData();
-	pc.changePerm(15, 9, 18);
-	pc.saveChanges();
-
-
 	DataFileHandler dfh;
-	std::string folder(R"(E:\projects\MastersDegree\Input\PROJECT.DATA)");
-	dfh.initialize(folder);
-	dfh.runIteration();
+	std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	dfh.initialize(folder + "PROJECT.DATA");
+
+	WellMap wellMap;
+	wellMap.initialize(folder);
+	FactReceiver fact;
+	fact.getWaterLevel(folder);
+
+	const auto maxNumberOfIterations = 2;
+	for (auto iteration = 0; iteration < maxNumberOfIterations; iteration++)
+	{
+		WaterLevelAnalyzer analyzer;
+		analyzer.fillWaterLevelTable(folder);
+
+		if (iteration != 0)
+		{
+			PermeabilityChanger pc;
+			pc.fillData(folder);
+			pc.changePerm(15, 9, 18);
+			pc.saveChanges();
+		}
+
+		std::map<std::string, double> results;
+		std::vector<std::string> resultsToCSV;
+		resultsToCSV.emplace_back("Well Name, Fact Level, Model Level, Difference");
+		for (auto wellName : fact.getAllWellNames())
+		{
+			auto xy = wellMap.getCoordsByWellName(wellName);
+			auto factLevel = fact.getWaterLevelByWellName(wellName);
+			auto result = analyzer.getDifferenceLevelModelFact(xy.first, xy.second, factLevel);
+			auto modelLevel = factLevel - result;
+			results[wellName] = result;
+			resultsToCSV.emplace_back(wellName + "," + std::to_string(factLevel) + "," + std::to_string(modelLevel) + "," + std::to_string(result));
+		}
+		FileWriter::writeResultsCSV(folder + "RESULTS.csv", resultsToCSV);
+
+		if (iteration != maxNumberOfIterations - 1)
+		{
+			folder = dfh.runIteration();
+			folder += "\\";
+		}
+	}
+	
+	
 
 
 	//run the algorithm here
-	WaterLevelAnalyzer analyzer;
-	analyzer.fillWaterLevelTable();
-	WellMap wellMap;
-	wellMap.initialize();
-	FactReceiver fact;
-	fact.getWaterLevel();
-	std::map<std::string, double> results;
-	for (auto wellName : fact.getAllWellNames())
-	{
-		auto xy = wellMap.getCoordsByWellName(wellName);
-		auto factLevel = fact.getWaterLevelByWellName(wellName);
-		auto result = analyzer.getDifferenceLevelModelFact(xy.first, xy.second, factLevel);
-		results[wellName] = result;
-	}
-
+	
 	//results table should be printed to file somewhere (#0 iteration)
 	//and now we need to read perfZ to change some values there
 

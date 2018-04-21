@@ -33,13 +33,14 @@ class PermeabilityChanger
 	int m_dimX;
 	int m_dimY;
 	int m_dimZ;
+	std::string m_folder;
 public:
 	PermeabilityChanger()
 	{
 		m_data = std::make_shared<std::map<xyz, double>>();
 	}
 	~PermeabilityChanger() {}
-	void fillData();
+	void fillData(const std::string& folder);
 	void changePerm(const int x, const int y, const int lowestZ);
 	double findAveragePerm(const std::pair<int, int>& xRange, const std::pair<int, int>& yRange, const std::pair<int, int>& zRange);
 	double findStdDeviation(const std::pair<int, int>& xRange, const std::pair<int, int>& yRange, const std::pair<int, int>& zRange, const double average);

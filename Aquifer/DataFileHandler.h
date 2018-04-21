@@ -13,7 +13,7 @@ public:
 	DataFileHandler() = default;
 	~DataFileHandler() = default;
 	void initialize(const std::string& filepath);
-	void runIteration();
+	std::string runIteration();
 
 private:
 	void splitFilename(const std::string& str);

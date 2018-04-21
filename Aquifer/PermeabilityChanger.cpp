@@ -1,11 +1,12 @@
 #include "PermeabilityChanger.h"
 using namespace std;
 
-void PermeabilityChanger::fillData()
+void PermeabilityChanger::fillData(const std::string& folder)
 {
-	std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	m_folder = folder;
 
-	auto permzData = FileReader::readAllFile(folder + "PERMZ");
+	auto permzData = FileReader::readAllFile(m_folder + "PERMZ");
 
 	//razm = DX * DY * DZ
 	//razm = 90 * 20 * 61
@@ -147,7 +148,7 @@ void PermeabilityChanger::saveChanges()
 		{
 			for (auto x = 1; x <= m_dimX; x++)
 			{
-				auto value = (*m_data)[{x, y, z}];
+				auto value = (*m_data)[{x, y, z}] *1.1;
 				line += (std::to_string(value) + " ");
 				if (x % 5 == 0 && !line.empty())
 				{
@@ -160,8 +161,8 @@ void PermeabilityChanger::saveChanges()
 	lines.emplace_back(line);
 	lines.emplace_back("/");
 
-	std::string folder(R"(E:\projects\MastersDegree\Input\)");
-	FileWriter::changeKeyword(folder + "PERMZ", "PERMZ", lines);
+	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	FileWriter::changeKeyword(m_folder + "PERMZ", "PERMZ", lines);
 }
 
 std::pair<double, double> PermeabilityChanger::getRangePerm(const double average, const double epsilon)

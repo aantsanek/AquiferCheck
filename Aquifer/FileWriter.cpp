@@ -59,3 +59,14 @@ void FileWriter::changeKeyword(const std::string& path, const std::string & keyw
 	}
 	ofile.close();
 }
+
+void FileWriter::writeResultsCSV(const std::string & path, const std::vector<std::string>& results)
+{
+	ofstream ofile;
+	ofile.open(path);
+	for (const auto string : results)
+	{
+		ofile << string << '\n';
+	}
+	ofile.close();
+}
