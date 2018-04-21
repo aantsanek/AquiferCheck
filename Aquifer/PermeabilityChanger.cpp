@@ -136,6 +136,34 @@ double PermeabilityChanger::findStdDeviation(const std::pair<int, int>& xRange, 
 	return std::sqrt(squaredSum / (size-1));
 }
 
+void PermeabilityChanger::saveChanges()
+{
+	std::vector<std::string> lines;
+	lines.emplace_back("PERMZ");
+	std::string line = "";
+	for (auto z = 1; z <= m_dimZ; z++)
+	{
+		for (auto y = 1; y <= m_dimY; y++)
+		{
+			for (auto x = 1; x <= m_dimX; x++)
+			{
+				auto value = (*m_data)[{x, y, z}];
+				line += (std::to_string(value) + " ");
+				if (x % 5 == 0 && !line.empty())
+				{
+					lines.emplace_back(line);
+					line = "";
+				}
+			}
+		}
+	}
+	lines.emplace_back(line);
+	lines.emplace_back("/");
+
+	std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	FileWriter::changeKeyword(folder + "PERMZ", "PERMZ", lines);
+}
+
 std::pair<double, double> PermeabilityChanger::getRangePerm(const double average, const double epsilon)
 {
 

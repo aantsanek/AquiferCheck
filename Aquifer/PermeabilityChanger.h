@@ -47,6 +47,7 @@ public:
 	std::pair<int, int> getRangeY(const int index, const int range);
 	std::pair<int, int> getRangeZ(const int index, const int range = 0);
 	std::pair<double, double> getRangePerm(const double average, const double epsilon);
+	void saveChanges();
 };
 
 struct PermeabilityChanger::PermeabilityCube
