@@ -34,11 +34,14 @@ Third map from FactReceiver
 	[wellname] -> [depth]
 */
 
-extern "C" __declspec(dllexport) void calculateButtonClicked()
+extern "C" __declspec(dllexport) void calculateButtonClicked(const char* dataPath, const char* folderPath)
 {
 	DataFileHandler dfh;
-	std::string folder(R"(E:\projects\MastersDegree\Input\)");
-	dfh.initialize(folder + "PROJECT.DATA");
+	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
+	std::string folder(folderPath);
+	folder += "\\";
+	std::string dataPathString(dataPath);
+	dfh.initialize(dataPathString);
 
 	WellMap wellMap;
 	wellMap.initialize(folder);

@@ -26,7 +26,7 @@ namespace GUI
         public static extern int doNothing(string input);
         //public static extern int doNothing(string input);
         [DllImport("AquiferD.dll")]
-        public static extern void calculateButtonClicked();
+        public static extern void calculateButtonClicked(string dataPath, string folderPath);
 
 
         public MainWindow()
@@ -39,8 +39,8 @@ namespace GUI
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
            
-            dlg.DefaultExt = ".gif";
-            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            dlg.DefaultExt = ".DATA";
+            dlg.Filter = "DATA Files (*.DATA)|*.DATA";//|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
@@ -48,15 +48,23 @@ namespace GUI
                 dataFilePath.Text = filename;
             }
             Debug.WriteLine("Initialize");
-            string t = dataFilePath.Text;
-            int x = doNothing(t);
-            MessageBox.Show(x.ToString());
+            var t = dataFilePath.Text;
+            //int x = doNothing(t);
+            //MessageBox.Show(x.ToString());
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            calculateButtonClicked();
+            string dataPath = dataFilePath.Text;
+            if (dataPath == "")
+            {
+                MessageBox.Show("Select a DATA File");
+                return;
+            }
+            string folder = System.IO.Path.GetDirectoryName(dataPath);
+
+            calculateButtonClicked(dataPath, folder);
         }
     }
 }
