@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Automatic Aquifer" Height="350" Width="525">
     <Grid>
         <Button Content="Select DATA file" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click"/>
         <TextBox x:Name="dataFilePath" HorizontalAlignment="Left" Height="20" Margin="203,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" IsReadOnly="True"/>
-        <Button Content="Calculate" HorizontalAlignment="Left" Margin="214,147,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Process" HorizontalAlignment="Left" Margin="222,167,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <RadioButton Content="Vertical Permeability Optimization" HorizontalAlignment="Left" Margin="23,68,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5" IsChecked="True"/>
+        <RadioButton Content="Aquifer's Pressure Optimization" HorizontalAlignment="Left" Margin="23,92,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5"/>
+        <RadioButton Content="Fuzzy Logic Rules Optimization" HorizontalAlignment="Left" Margin="23,116,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5"/>
+        <GroupBox Header="Select Processing Method:" HorizontalAlignment="Left" Height="103" Margin="10,44,0,0" VerticalAlignment="Top" Width="238"/>
 
     </Grid>
 </Window>

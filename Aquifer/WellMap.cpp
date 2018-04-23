@@ -42,3 +42,14 @@ std::pair<int, int> WellMap::getCoordsByWellName(const std::string& wellName) co
 	auto props = wellMap.at(wellName);
 	return { props.x, props.y };
 }
+
+int WellMap::getZByWellName(const std::string& wellName) const
+{
+	auto existance = wellMap.find(wellName);
+	if (existance == wellMap.end())
+	{
+		return -1;
+	}
+	auto props = wellMap.at(wellName);
+	return props.lastZ;
+}

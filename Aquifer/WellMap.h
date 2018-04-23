@@ -10,6 +10,7 @@ public:
 
 	void initialize(const std::string& folder);
 	std::pair<int, int> getCoordsByWellName(const std::string& wellName) const;
+	int getZByWellName(const std::string& wellName) const;
 };
 
 struct WellMap::WellProperties

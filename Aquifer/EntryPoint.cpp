@@ -49,6 +49,7 @@ extern "C" __declspec(dllexport) void calculateButtonClicked(const char* dataPat
 	fact.getWaterLevel(folder);
 
 	const auto maxNumberOfIterations = 2;
+	std::map<std::string, double> results;
 	for (auto iteration = 0; iteration < maxNumberOfIterations; iteration++)
 	{
 		WaterLevelAnalyzer analyzer;
@@ -58,11 +59,19 @@ extern "C" __declspec(dllexport) void calculateButtonClicked(const char* dataPat
 		{
 			PermeabilityChanger pc;
 			pc.fillData(folder);
-			pc.changePerm(15, 9, 18);
+			for (auto pair : results)
+			{
+				if (std::abs(pair.second) > 3)
+				{
+					auto coordsXY = wellMap.getCoordsByWellName(pair.first);
+					auto lastZ = wellMap.getZByWellName(pair.first);
+					pc.changePerm(coordsXY.first, coordsXY.second, lastZ);
+				}
+			}
 			pc.saveChanges();
 		}
 
-		std::map<std::string, double> results;
+		
 		std::vector<std::string> resultsToCSV;
 		resultsToCSV.emplace_back("Well Name, Fact Level, Model Level, Difference");
 		for (auto wellName : fact.getAllWellNames())
