@@ -151,8 +151,20 @@
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.pdb" DestinationFolder="$(SolutionDir)GUI\" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.dll" DestinationFolder="$(SolutionDir)GUI\" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Debug'" />
-    <Copy SourceFiles="$(SolutionDir)$(Platform)\Release\Aquifer.dll" DestinationFolder="$(SolutionDir)GUI\" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" Condition="'$(Configuration)'=='Release'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.pdb"
+          DestinationFolder="$(SolutionDir)GUI\"
+          OverwriteReadOnlyFiles="true"
+          SkipUnchangedFiles="false"
+          Condition="'$(Configuration)'=='Debug'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Debug\AquiferD.dll"
+          DestinationFolder="$(SolutionDir)GUI\"
+          OverwriteReadOnlyFiles="true"
+          SkipUnchangedFiles="false"
+          Condition="'$(Configuration)'=='Debug'" />
+    <Copy SourceFiles="$(SolutionDir)$(Platform)\Release\Aquifer.dll"
+          DestinationFolder="$(SolutionDir)GUI\"
+          OverwriteReadOnlyFiles="true"
+          SkipUnchangedFiles="false"
+          Condition="'$(Configuration)'=='Release'" />
   </Target>
 </Project>

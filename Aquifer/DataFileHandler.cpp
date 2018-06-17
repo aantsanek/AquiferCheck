@@ -53,6 +53,7 @@ void DataFileHandler::copyFolder()
 
 std::string DataFileHandler::runIteration()
 {
+	//copies an entire folder with model, so all calculation will be in a separate model
 	copyFolder();
 
 	auto dataPullPath = std::string("c:\\ecl\\2009.1\\bin\\pc\\eclipse.exe ") + removeDotData(m_name) + std::string("\n");
@@ -73,12 +74,17 @@ std::string DataFileHandler::runIteration()
 	batch.close();
 
 	int i;
-	printf("Checking if processor is available...");
-	if (system(NULL)) puts("Ok");
-	else exit(EXIT_FAILURE);
-	printf("Executing command DIR...\n");
+	//Checking if processor is available...
+	if (system(NULL))
+	{
+		puts("Ok");
+	}
+	else
+	{
+		exit(EXIT_FAILURE);
+	}
+	//Executing command DIR...
 	i = system(batchFilePath.c_str());
-	printf("The value returned was: %d.\n", i);
 	return m_currentIterationFolder;
 }
 

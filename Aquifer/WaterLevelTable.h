@@ -3,7 +3,6 @@
 
 class WaterLevelTable
 {
-	struct WaterLevelBlock;
 	std::map<std::pair<int, int>, std::pair<int, double>> table;
 	
 public:
