@@ -1,10 +1,10 @@
 #include "FactReceiver.h"
 
-void FactReceiver::getWaterLevel(const std::string& folder)
+void FactReceiver::getWaterLevel(const std::string& factFilePath)
 {
 	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
 
-	auto factInput = FileReader::readAllFile(folder + "FACTWATERLEVEL.csv", ',');
+	auto factInput = FileReader::readAllFile(factFilePath, ',');
 
 	if (factInput->size() % 2 != 0)
 	{

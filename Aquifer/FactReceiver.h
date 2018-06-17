@@ -7,7 +7,7 @@ class FactReceiver
 public:
 	FactReceiver() = default;
 	~FactReceiver() = default;
-	void getWaterLevel(const std::string& folder);
+	void getWaterLevel(const std::string& factFilePath);
 	double getWaterLevelByWellName(const std::string& wellName) const;
 	std::vector<std::string> getAllWellNames() const;
 };

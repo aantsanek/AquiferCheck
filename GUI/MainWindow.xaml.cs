@@ -16,7 +16,7 @@ namespace GUI
         public static extern int doNothing(string input);
         //public static extern int doNothing(string input);
         [DllImport("AquiferD.dll")]
-        public static extern void calculateButtonClicked(string dataPath, string folderPath);
+        public static extern void calculateButtonClicked(string dataPath, string folderPath, string factPath, bool once, int method);
 
 
         public MainWindow()
@@ -37,8 +37,8 @@ namespace GUI
                 string filename = dlg.FileName;
                 dataFilePath.Text = filename;
             }
-            Debug.WriteLine("Initialize");
-            var t = dataFilePath.Text;
+            //Debug.WriteLine("Initialize");
+            //var t = dataFilePath.Text;
             //int x = doNothing(t);
             //MessageBox.Show(x.ToString());
 
@@ -54,7 +54,16 @@ namespace GUI
             }
             string folder = System.IO.Path.GetDirectoryName(dataPath);
 
-            calculateButtonClicked(dataPath, folder);
+            string fact = factPath.Text;
+            if (fact == "")
+            {
+                MessageBox.Show("Select a fact water level file");
+                return;
+            }
+
+            int method = firstMethod.IsChecked == true ? 0 : 1; 
+
+            calculateButtonClicked(dataPath, folder, fact, false, method);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -75,7 +84,36 @@ namespace GUI
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            string dataPath = dataFilePath.Text;
+            if (dataPath == "")
+            {
+                MessageBox.Show("Select a DATA File");
+                return;
+            }
+            string folder = System.IO.Path.GetDirectoryName(dataPath);
 
+            string fact = factPath.Text;
+            if (fact == "")
+            {
+                MessageBox.Show("Select a fact water level file");
+                return;
+            }
+
+            calculateButtonClicked(dataPath, folder, fact, true, 0);//does not use method
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            dlg.DefaultExt = ".csv";
+            dlg.Filter = "CSV Files (*.CSV)|*.CSV";//|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                factPath.Text = filename;
+            }
         }
     }
 }

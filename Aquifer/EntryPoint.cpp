@@ -35,7 +35,7 @@ Third map from FactReceiver
 */
 
 extern "C" __declspec(dllexport)
-void calculateButtonClicked(const char* dataPath, const char* folderPath)
+void calculateButtonClicked(const char* dataPath, const char* folderPath, const char* factPath, bool once, int method)
 {
 	DataFileHandler dfh;
 	//std::string folder(R"(E:\projects\MastersDegree\Input\)");
@@ -43,13 +43,13 @@ void calculateButtonClicked(const char* dataPath, const char* folderPath)
 	folder += "\\";
 	std::string dataPathString(dataPath);
 	dfh.initialize(dataPathString);
+	std::string factFilePath(factPath);
 
 	WellMap wellMap;
 	wellMap.initialize(folder);
 	FactReceiver fact;
-	fact.getWaterLevel(folder);
-
-	const auto maxNumberOfIterations = 2;
+	fact.getWaterLevel(factFilePath);
+	const int maxNumberOfIterations = once ? 1 : 10;
 	std::map<std::string, double> results;
 	for (auto iteration = 0; iteration < maxNumberOfIterations; iteration++)
 	{

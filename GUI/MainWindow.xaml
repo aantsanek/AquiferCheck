@@ -10,12 +10,11 @@
         <Button Content="Select DATA file" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click"/>
         <TextBox x:Name="dataFilePath" HorizontalAlignment="Left" Height="20" Margin="203,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" IsReadOnly="True"/>
         <Button Content="Process" HorizontalAlignment="Left" Margin="222,185,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <RadioButton Content="Vertical Permeability Optimization" HorizontalAlignment="Left" Margin="23,113,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5" IsChecked="True"/>
-        <RadioButton Content="Aquifer's Pressure Optimization" HorizontalAlignment="Left" Margin="23,137,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5"/>
+        <RadioButton x:Name="firstMethod" Content="Vertical Permeability Optimization" HorizontalAlignment="Left" Margin="23,113,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5" IsChecked="True"/>
+        <RadioButton x:Name="secondMethod" Content="Aquifer's Pressure Optimization" HorizontalAlignment="Left" Margin="23,137,0,0" VerticalAlignment="Top" Height="19" RenderTransformOrigin="0.5,0.5"/>
         <GroupBox Header="Select Processing Method:" HorizontalAlignment="Left" Height="77" Margin="10,89,0,0" VerticalAlignment="Top" Width="238"/>
-        <TextBox x:Name="dataFilePath_Copy" HorizontalAlignment="Left" Height="20" Margin="203,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" IsReadOnly="True"/>
-        <Button Content="Select fact water level file" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click"/>
-        <TextBox x:Name="dataFilePath_Copy1" HorizontalAlignment="Left" Height="20" Margin="203,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" IsReadOnly="True"/>
+        <Button Content="Select fact water level file" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click_4"/>
+        <TextBox x:Name="factPath" HorizontalAlignment="Left" Height="20" Margin="203,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" IsReadOnly="True"/>
         <Button Content="Export template" HorizontalAlignment="Left" Margin="416,35,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click_2"/>
         <Button Content="Calculate model water level" HorizontalAlignment="Left" Margin="353,60,0,0" VerticalAlignment="Top" Width="154" Click="Button_Click_3"/>
 
